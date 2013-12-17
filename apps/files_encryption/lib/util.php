@@ -241,11 +241,9 @@ class Util {
 		if (\OCP\DB::isError($result)) {
 			\OCP\Util::writeLog('Encryption library', \OC_DB::getErrorMessage($result), \OCP\Util::ERROR);
 		} else {
-			if ($result->numRows() > 0) {
-				$row = $result->fetchRow();
-				if (isset($row['recovery_enabled'])) {
-					$recoveryEnabled[] = $row['recovery_enabled'];
-				}
+			$row = $result->fetchRow();
+			if (isset($row['recovery_enabled'])) {
+				$recoveryEnabled[] = $row['recovery_enabled'];
 			}
 		}
 
@@ -985,8 +983,8 @@ class Util {
 		if (\OCP\DB::isError($result)) {
 			\OCP\Util::writeLog('Encryption library', \OC_DB::getErrorMessage($result), \OCP\Util::ERROR);
 		} else {
-			if ($result->numRows() > 0) {
-				$row = $result->fetchRow();
+			$row = $result->fetchRow();
+			if ($row) {
 				$path = substr($row['path'], strlen('files'));
 			}
 		}
@@ -1266,11 +1264,9 @@ class Util {
 		if (\OCP\DB::isError($result)) {
 			\OCP\Util::writeLog('Encryption library', \OC_DB::getErrorMessage($result), \OCP\Util::ERROR);
 		} else {
-			if ($result->numRows() > 0) {
-				$row = $result->fetchRow();
-				if (isset($row['migration_status'])) {
-					$migrationStatus[] = $row['migration_status'];
-				}
+			$row = $result->fetchRow();
+			if (isset($row['migration_status'])) {
+				$migrationStatus[] = $row['migration_status'];
 			}
 		}
 
@@ -1450,9 +1446,7 @@ class Util {
 		if (\OCP\DB::isError($result)) {
 			\OCP\Util::writeLog('Encryption library', \OC_DB::getErrorMessage($result), \OCP\Util::ERROR);
 		} else {
-			if ($result->numRows() > 0) {
-				$row = $result->fetchRow();
-			}
+			$row = $result->fetchRow();
 		}
 
 		return $row;
@@ -1476,9 +1470,7 @@ class Util {
 		if (\OCP\DB::isError($result)) {
 			\OCP\Util::writeLog('Encryption library', \OC_DB::getErrorMessage($result), \OCP\Util::ERROR);
 		} else {
-			if ($result->numRows() > 0) {
-				$row = $result->fetchRow();
-			}
+			$row = $result->fetchRow();
 		}
 
 		return $row;
@@ -1501,9 +1493,7 @@ class Util {
 		if (\OCP\DB::isError($result)) {
 			\OCP\Util::writeLog('Encryption library', \OC_DB::getErrorMessage($result), \OCP\Util::ERROR);
 		} else {
-			if ($result->numRows() > 0) {
-				$source = $result->fetchRow();
-			}
+			$source = $result->fetchRow();
 		}
 
 		$fileOwner = false;
@@ -1522,9 +1512,7 @@ class Util {
 				if (\OCP\DB::isError($result)) {
 					\OCP\Util::writeLog('Encryption library', \OC_DB::getErrorMessage($result), \OCP\Util::ERROR);
 				} else {
-					if ($result->numRows() > 0) {
-						$item = $result->fetchRow();
-					}
+					$item = $result->fetchRow();
 				}
 
 				if (isset($item['parent'])) {

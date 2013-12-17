@@ -130,14 +130,12 @@ abstract class Test_Files_Sharing_Base extends \PHPUnit_Framework_TestCase {
 		$query = \OCP\DB::prepare($sql);
 		$result = $query->execute($args);
 
-		$share = Null;
-
-		if ($result && $result->numRows() > 0) {
-				$share = $result->fetchRow();
+		$share = null;
+		if ($result) {
+			$share = $result->fetchRow();
 		}
 
 		return $share;
-
 	}
 
 }
